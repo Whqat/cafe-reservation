@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}" />
+{% endblock %}
+
+{% block content %}
+<form method="post" class="form form--register">
+    
+    <div class="form--container">
+        <h1 class="form__title form--register__title">
+            {% if form.errors.items() %}
+                <p class="form__error">
+                    {% for error in form.errors.items() %}
+                        {{ error[1] }}
+                    {% endfor %}
+                </p>
+            {% endif %}             
+            Reserve a Table
+        </h1>
+        {{ form.hidden_tag() }}
+        <div class="form__item">
+            <p class="form--label">{{ form.date.label }}</p>
+                {{ form.date(class_="form--area") }}
+        </div>
+        <div class="form__item">
+            <p class="form--label">{{ form.time.label }}</p> 
+                {{ form.time(class_="form--area", placeholder="Any comprehensible time format") }}
+        </div>
+        <div class="form__submit">
+            {{ form.submit(class_="button--form") }}
+        </div>
+        <i class="form__note">Your account's name will be used as the name for the reservation.</i>
+    </div>
+
+</form> 
+{% endblock %}

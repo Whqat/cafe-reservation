@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <main>
+        <!-- {% if endpoint|string() == 1|string() %}
+            <div class="resend">
+                <a class="resend--link" href="{{ url_for('resend_confirmation') }}">
+                    Resend confirmation email
+                </a>
+            </div>
+        {% endif %} -->
+        <div class="main main--home">
+            <div class="home__content">
+                <i class="home__text">
+                "There's always time for coffee!"
+                </i>
+                <a href='{{ url_for("reserve") }}' class="home__link">
+                    <i class="home__text">
+                        Reserve a table at our cafe online!
+                    </i>
+                </a>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block footer %}
+    {% if user and user.reservations %}
+        <div class="current__reservation">
+            <p class="current__reservation--text">Current reservations for {{ user.name }}:</p>
+            {% for reservation in user.reservations %}
+                <p class="current__reservation--content">{{ reservation }} at {{ reservation.time }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

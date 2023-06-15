@@ -1,0 +1,10 @@
+flask
+flask-sqlalchemy
+flask-bcrypt
+flask_wtf
+email_validator
+python-decouple
+psycopg2
+flask-mail
+python-dotenv
+gunicorn
